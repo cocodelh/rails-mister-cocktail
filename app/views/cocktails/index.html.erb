@@ -1,8 +1,33 @@
-<h1>My cocktails</h1>
-<ul>
-  <% @cocktails.each do |cocktail| %>
-    <li><%= link_to cocktail.name, cocktail_path(cocktail) %></li>
-  <% end %>
-</ul>
 
-<%= link_to "Add a new cocktail", new_cocktail_path %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://img.cuisineaz.com/680x357/2017-07-18/i130849-.jpeg);">
+  <div class="container">
+    <h1>Mister cocktails</h1>
+    <p>Try our delicious cocktails</p>
+  </div>
+</div>
+
+  <div class="add">
+    <%= link_to "Add a new cocktail", new_cocktail_path, class: "btn btn-ghost" %>
+  </div>
+
+<div class="cards">
+  <% @cocktails.each do |cocktail| %>
+  <div class="card-category"style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.picture_url %>)">
+    <%= link_to cocktail.name, cocktail_path(cocktail) %>
+  </div>
+  <% end %>
+</div>
+
+
+<div class="footer">
+  <div class="footer-links">
+    <a href="#"><i class="fab fa-github"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-facebook"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin"></i></a>
+  </div>
+  <div class="footer-copyright">
+    This website is made with <i class="fas fa-heart"></i> by Coralie and Maxime
+  </div>
+</div>

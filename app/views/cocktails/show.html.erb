@@ -1,16 +1,63 @@
-<ul class="list-group">
-  <% @cocktail.doses.each do |dose| %>
-    <li class="list-group-item">
-      <%= @cocktail.name%>
-      <%= dose.description %>
-      <%= dose.ingredient.name %>
-      <%= link_to "Remove",
-                  dose_path(dose),
-                  method: :delete,
-                  data: { confirm: "Are you sure?" } %>
-    </li>
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+  <%= link_to "#", class: "navbar-brand" do %>
+    <%= image_tag "https://image.flaticon.com/icons/png/512/32/32435.png" %>
   <% end %>
-</ul>
 
-<%= link_to "Add a dose", new_cocktail_dose_path(@cocktail)%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <%= link_to "Home", cocktails_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Messages", "#", class: "nav-link" %>
+      </li>
+      <li class="nav-item dropdown">
+        <%= image_tag "https://ca.slack-edge.com/T02NE0241-U01CSLS0S73-06aaffd40e9b-512", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+          <%= link_to "Action", "#", class: "dropdown-item" %>
+          <%= link_to "Another action", "#", class: "dropdown-item" %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col1">
+  <% @cocktail.doses.each do |dose| %>
+    <div class="card-cocktail-infos">
+      <div>
+        <img src='cocktail.picture_url' />
+        <h2><strong><%= @cocktail.name%></strong></h2>
+        <p><%= dose.description %> <%= dose.ingredient.name%></p>
+      </div>
+      <%= link_to "Remove ingredient",
+              dose_path(dose),
+              method: :delete,
+              data: { confirm: "Are you sure?" }, class: "btn btn-ghost" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="col2">
+    <div class="add">
+      <h6><strong>Add a new ingredient</strong></h6>
+      <%= simple_form_for [ @cocktail, @dose ] do |f| %>
+      <%= f.association :ingredient %>
+      <%= f.input :description %>
+      <%= f.submit "Add ingredient", class: "btn btn-ghost" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
 

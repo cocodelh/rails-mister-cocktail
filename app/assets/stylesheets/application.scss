@@ -11,3 +11,13 @@
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
+
+.row {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+
+.add-cocktail {
+  text-align: center;
+}
