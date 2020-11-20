@@ -30,11 +30,12 @@
 
 <div class="row">
   <div class="cocktail-card">
-    <% if @cocktail.picture_url.present? %>
-        <%= cl_image_tag @cocktail.picture_url.key, width: 400, crop: :fill %>
+    <% if @cocktail.photo.present? %>
+        <%= cl_image_tag @cocktail.photo.key, width: 400, crop: :fill %>
     <% else %>
-        <%= image_tag 'placeholder.png', width: 400 %>
+        <%= image_tag('placeholder.png')%>
     <% end %>
+
     <h2><strong><%= @cocktail.name%></strong></h2>
     <div class="card-cocktail-infos">
       <h5>Ingredients</h5>

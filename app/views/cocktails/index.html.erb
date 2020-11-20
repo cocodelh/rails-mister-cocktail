@@ -12,7 +12,7 @@
 
 <div class="cards">
   <% @cocktails.each do |cocktail| %>
-  <div class="card-category"style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cocktail.picture_url %>)">
+  <div class="card-category"style=" background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cocktail.photo.present? ? cl_image_path(cocktail.photo.key, height: 300, width: 400, crop: :fill) : image_path("placeholder.png") %>')">
     <%= link_to cocktail.name, cocktail_path(cocktail) %>
   </div>
   <% end %>
@@ -31,9 +31,3 @@
     This website is made with <i class="fas fa-heart"></i> by Coralie and Maxime
   </div>
 </div>
-
-<%= cl_image_tag("oom0u53davygracfwfer",
-      width: 400, height: 300, crop: :fill) %>
-
-<%= cl_image_tag("bn8vxda3mdw0mjc9i7uv",
-width: 150, height: 150, crop: :thumb, gravity: :face) %>
