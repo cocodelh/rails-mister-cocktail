@@ -14,9 +14,6 @@ class CocktailsController < ApplicationController
     else
       render :new
     end
-
-    # no need for app/views/restaurants/create.html.erb
-    redirect_to cocktails_path
   end
 
   def show
